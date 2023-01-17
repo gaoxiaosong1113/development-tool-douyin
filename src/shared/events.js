@@ -98,3 +98,4 @@ export const EVENT_WEB_SEARCH = 'web.search'
 
 // web 发出下载指定视频
 export const EVENT_WEB_DOWNLOAD = 'web.download'
+export const EVENT_WEB_DOWNLOAD_ALL = 'web.download.all'

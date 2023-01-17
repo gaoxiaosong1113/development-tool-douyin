@@ -4,7 +4,6 @@ import * as url from 'url'
 
 import { isProd, isLinux } from '../config/env'
 import { appIcon } from '../config/icon'
-
 // const winURL = isProd? :`http://localhost:3000/#/`
 
 // if (mode === 'dev') {
@@ -19,7 +18,7 @@ import { appIcon } from '../config/icon'
 const winURL = !isProd
   ? `http://localhost:3000/#/`
   : url.format({
-      pathname: path.join(__dirname, './build/index.html'),
+      pathname: path.join(__dirname, '../../build/index.html'),
       protocol: 'file:',
       slashes: true,
     })
@@ -38,7 +37,7 @@ export function createWindow() {
     // ...getBounds(),
     width: 1200,
     height: 800,
-    backgroundColor: '#00000000',
+    // backgroundColor: '#00000000',
     movable: true,
     // minimizable: false,
     // autoHideMenuBar: true,
@@ -61,9 +60,7 @@ export function createWindow() {
   })
 
   mainWindow.setMenu(null)
-  mainWindow.loadURL(winURL).then(() => {
-    console.log('mainWindow.loadURL(winURL)')
-  })
+  mainWindow.loadURL(winURL).then(() => {})
   // hide to tray when window closed
   mainWindow.on('close', e => {
     // 当前不是退出APP的时候才去隐藏窗口
@@ -84,7 +81,7 @@ export function createWindow() {
     mainWindow.webContents.once('did-finish-load', resolve)
   })
 
-  mainWindow.webContents.openDevTools()
+  // mainWindow.webContents.openDevTools()
 }
 
 /**
@@ -136,7 +133,7 @@ export async function sendData(channel, ...args) {
 export async function openDevtool() {
   if (mainWindow) {
     await readyPromise
-    mainWindow.webContents.openDevTools()
+    // mainWindow.webContents.openDevTools()
   } else {
     console.log('not ready')
   }

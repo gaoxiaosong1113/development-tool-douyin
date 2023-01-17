@@ -1,13 +1,9 @@
 import { app, contextBridge, globalShortcut, ipcRenderer } from 'electron'
 
-// import path from 'path'
-
 import * as trayFeature from './feature/tray'
 
 import * as homeViewServe from './views/home'
-import * as configData from './config/data'
 
-// import { run_path } from './config/path'
 import { init as initIcon } from './config/icon'
 import { init as initPath } from './config/path'
 

@@ -10,6 +10,7 @@ contextBridge.exposeInMainWorld('app', {
   setCookie: appConfig => ipcRenderer.send(events.EVENT_APP_CONFIG_COOKIE, appConfig),
   onUserConfig: callback => ipcRenderer.on(events.EVENT_WEB_USER_INFO, callback),
   download: appConfig => ipcRenderer.invoke(events.EVENT_WEB_DOWNLOAD, appConfig),
+  downloadAll: appConfig => ipcRenderer.invoke(events.EVENT_WEB_DOWNLOAD, appConfig),
   getUserData: appConfig => ipcRenderer.send(events.EVENT_WEB_USER, appConfig),
   getSearchData: appConfig => ipcRenderer.send(events.EVENT_WEB_SEARCH, appConfig),
   onUserData: callback => ipcRenderer.on(events.EVENT_WEB_USER, callback),

@@ -34,21 +34,44 @@ function DownloadPage() {
   }
 
   const handleDown = async item => {
-    setLoading(item.name)
-    let data = await window.app.download({
-      dimensions: downloadUserStore,
-      current: item,
-      data: downloadStore,
+    return new Promise(async () => {
+      setLoading(item.name)
+      let data = await window.app.download({
+        dimensions: downloadUserStore,
+        current: item,
+        data: downloadStore,
+      })
+      setDownloadStore(data)
+      setLoading(null)
     })
-    setDownloadStore(data)
-    setLoading(null)
+  }
+
+  const handleDownAll = async () => {
+    for (let i = 0; i < downloadStore.length; i++) {
+      await handleDown(downloadStore[i])
+    }
   }
 
   return (
     <div className='content'>
       <Row>
         <Col span={12} offset={6}>
-          <Search placeholder='请输入分享链接' allowClear enterButton='搜索' size='large' onSearch={onSearch} />
+          <Search
+            placeholder='请输入分享链接'
+            allowClear
+            enterButton='搜索'
+            size='large'
+            suffix={
+              <DownloadOutlined
+                style={{
+                  fontSize: 16,
+                  color: '#1890ff',
+                }}
+                onClick={handleDownAll}
+              />
+            }
+            onSearch={onSearch}
+          />
         </Col>
       </Row>
 

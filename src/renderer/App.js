@@ -3,7 +3,8 @@ import { HashRouter, useNavigate, useLocation, Route, Routes } from 'react-route
 
 import { MenuFoldOutlined, MenuUnfoldOutlined, UploadOutlined, UserOutlined, VideoCameraOutlined, DownloadOutlined, SearchOutlined, HomeOutlined, SettingOutlined } from '@ant-design/icons'
 
-import { Layout, Menu, theme, Breadcrumb, Spin } from 'antd'
+import { ConfigProvider, Layout, Menu, theme, Breadcrumb, Spin } from 'antd'
+import zhCN from 'antd/locale/zh_CN'
 
 import AppContext from './utils/appContext'
 import { getUrl } from './utils/utils'
@@ -79,71 +80,73 @@ function App(props) {
   }
 
   return (
-    <AppContext.Provider value={{ loading, store, downloadStore, downloadUserStore, searchStore, setSearchStore, setDownloadStore, setDownloadUserStore, setLoading }}>
-      <Layout>
-        <Sider trigger={null} collapsible collapsed={collapsed} style={{ background: colorBgContainer }}>
-          <div className='logo' />
-          <Menu
-            mode='inline'
-            defaultSelectedKeys={[location.pathname]}
-            onClick={handleClick}
-            items={[
-              {
-                key: '/',
-                icon: <HomeOutlined />,
-                label: '首页',
-              },
-              {
-                key: '/download',
-                icon: <DownloadOutlined />,
-                label: '下载',
-              },
-              // {
-              //   key: '/update',
-              //   icon: <UploadOutlined />,
-              //   label: '更新',
-              // },
-              {
-                key: '/search',
-                icon: <SearchOutlined />,
-                label: '搜索',
-              },
-              {
-                key: '/settings',
-                icon: <SettingOutlined />,
-                label: '设置',
-              },
-            ]}
-          />
-        </Sider>
-        <Layout
-          className='site-layout'
-          style={{
-            background: colorBgContainer,
-          }}>
-          {/* <Header style={{ padding: 0, background: colorBgContainer }}>
+    <ConfigProvider locale={zhCN}>
+      <AppContext.Provider value={{ loading, store, downloadStore, downloadUserStore, searchStore, setSearchStore, setDownloadStore, setDownloadUserStore, setLoading }}>
+        <Layout>
+          <Sider trigger={null} collapsible collapsed={collapsed} style={{ background: colorBgContainer }}>
+            <div className='logo' />
+            <Menu
+              mode='inline'
+              defaultSelectedKeys={[location.pathname]}
+              onClick={handleClick}
+              items={[
+                {
+                  key: '/',
+                  icon: <HomeOutlined />,
+                  label: '首页',
+                },
+                {
+                  key: '/download',
+                  icon: <DownloadOutlined />,
+                  label: '下载',
+                },
+                // {
+                //   key: '/update',
+                //   icon: <UploadOutlined />,
+                //   label: '更新',
+                // },
+                {
+                  key: '/search',
+                  icon: <SearchOutlined />,
+                  label: '搜索',
+                },
+                {
+                  key: '/settings',
+                  icon: <SettingOutlined />,
+                  label: '设置',
+                },
+              ]}
+            />
+          </Sider>
+          <Layout
+            className='site-layout'
+            style={{
+              background: colorBgContainer,
+            }}>
+            {/* <Header style={{ padding: 0, background: colorBgContainer }}>
             {React.createElement(collapsed ? MenuUnfoldOutlined : MenuFoldOutlined, {
               className: 'trigger',
               onClick: () => setCollapsed(!collapsed),
             })}
           </Header> */}
-          <div className='content-warp'>
-            <Spin tip='Loading' size='small' spinning={loading}>
-              <Content>
-                <Routes>
-                  <Route path='/' element={<Home />} desc='首页' />
-                  <Route path='/download' element={<Download />} desc='下载' />
-                  <Route path='/update' element={<Update />} desc='更新' />
-                  <Route path='/update/:index' element={<Update />} desc='更新' />
-                  <Route path='/search' element={<Search />} desc='搜索' />
-                  <Route path='/settings' element={<Settings />} desc='设置' />
-                </Routes>
-              </Content>
-            </Spin>
-          </div>
+            <div className='content-warp'>
+              <Spin tip='Loading' size='small' spinning={loading}>
+                <Content>
+                  <Routes>
+                    <Route path='/' element={<Home />} desc='首页' />
+                    <Route path='/download' element={<Download />} desc='下载' />
+                    <Route path='/update' element={<Update />} desc='更新' />
+                    <Route path='/update/:index' element={<Update />} desc='更新' />
+                    <Route path='/search' element={<Search />} desc='搜索' />
+                    <Route path='/settings' element={<Settings />} desc='设置' />
+                  </Routes>
+                </Content>
+              </Spin>
+            </div>
+          </Layout>
         </Layout>
-      </Layout>
-    </AppContext.Provider>
+      </AppContext.Provider>
+    </ConfigProvider>
   )
 }
 

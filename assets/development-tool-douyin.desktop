@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=抖音下载
+Comment=抖音 · 下载
+GenericName=抖音下载
+Exec=development-tool-douyin %U
+Icon=development-tool-douyin
+Type=Application
+StartupNotify=true
+Categories=Graphics;System;Utility;
+MimeType=image/png;image/jpg;image/svg;

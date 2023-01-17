@@ -7,7 +7,7 @@ import { openDevtool } from '../views/home'
 let tray = null
 
 export function createTray() {
-  tray = new Tray(`${run_path}/assets/logo/16x16.png`)
+  tray = new Tray(`${run_path}/assets/icons/16x16.png`)
   const contextMenu = Menu.buildFromTemplate([
     {
       label: '下载',

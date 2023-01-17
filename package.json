@@ -1,8 +1,9 @@
 {
-  "name": "development-tool",
+  "name": "development-tool-douyin",
   "version": "1.0.0",
   "description": "",
-  "main": "./out/main/main.js",
+  "main": "dist/main/main.js",
+  "productName": "抖音下载",
   "scripts": {
     "start:web": "craco start",
     "build:web": "craco build",
@@ -19,6 +20,7 @@
   "devDependencies": {
     "@electron-forge/cli": "^6.0.4",
     "@electron-forge/maker-deb": "^6.0.4",
+    "@electron-forge/maker-dmg": "^6.0.4",
     "@electron-forge/maker-rpm": "^6.0.4",
     "@electron-forge/maker-squirrel": "^6.0.4",
     "@electron-forge/maker-zip": "^6.0.4",
@@ -30,12 +32,13 @@
   },
   "build": {
     "asar": false,
+    "productName": "抖音下载",
     "appId": "com.development-tool-douyin.app",
     "directories": {
       "output": "build"
     },
     "compression": "maximum",
-    "icon": "./assets/logo",
+    "icon": "./assets/icons",
     "electronDownload": {
       "mirror": "https://npmmirror.com/mirrors/electron/"
     },
@@ -59,6 +62,7 @@
     ],
     "beforePack": "./before_pack.js",
     "linux": {
+      "icon": "./assets/icon.ico",
       "category": "Utility",
       "target": [
         "tar.gz",
@@ -69,29 +73,30 @@
       "files": [
         "!.vscode",
         "!.github",
-        "!assets/logo/icon.icns",
-        "!assets/logo/icon.ico",
+        "!assets/icons/icon.icns",
+        "!assets/icon.ico",
         "!src",
         "!node_modules/onnxruntime-node/bin/napi-v3/win32",
         "!node_modules/onnxruntime-node/bin/napi-v3/darwin"
       ]
     },
     "mac": {
+      "icon": "./assets/icon.ico",
       "files": [
         "!lib/gtk-open-with",
         "!lib/kde-open-with",
         "!.vscode",
         "!.github",
-        "!assets/logo/1024x1024.png",
-        "!assets/logo/512x512.png",
-        "!assets/logo/icon.ico",
+        "!assets/icons/1024x1024.png",
+        "!assets/icons/512x512.png",
+        "!assets/icon.ico",
         "!src",
         "!node_modules/onnxruntime-node/bin/napi-v3/win32",
         "!node_modules/onnxruntime-node/bin/napi-v3/linux"
       ]
     },
     "win": {
-      "icon": "./assets/logo/icon.ico",
+      "icon": "./assets/icon.ico",
       "target": [
         "nsis",
         "zip"
@@ -101,9 +106,9 @@
         "!lib/kde-open-with",
         "!.vscode",
         "!.github",
-        "!assets/logo/icon.icns",
-        "!assets/logo/1024x1024.png",
-        "!assets/logo/512x512.png",
+        "!assets/icons/icon.icns",
+        "!assets/icons/1024x1024.png",
+        "!assets/icons/512x512.png",
         "!src",
         "!node_modules/onnxruntime-node/bin/napi-v3/linux",
         "!node_modules/onnxruntime-node/bin/napi-v3/darwin"
@@ -112,7 +117,10 @@
     "nsis": {
       "oneClick": false,
       "allowToChangeInstallationDirectory": true,
-      "include": "./installer.nsh"
+      "include": "./installer.nsh",
+      "installerIcon": "./assets/logo.ico",
+      "uninstallerIcon": "./assets/logo.ico",
+      "installerHeaderIcon": "./assets/logo.ico"
     }
   },
   "dependencies": {

@@ -3,7 +3,7 @@ import * as path from 'path'
 import { ensureDir, pathExists, outputJson } from 'fs-extra'
 
 export const run_path = path.join(path.resolve(__dirname, ''), '../../')
-export const staticPath = path.join(__dirname, '../static').replace(/\\/g, '\\\\')
+export const staticPath = path.join(__dirname, '../../static').replace(/\\/g, '\\\\')
 
 // 应用配置存储目录
 export const appConfigDir = app.getPath('userData')
