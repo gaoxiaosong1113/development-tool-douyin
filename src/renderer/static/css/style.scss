@@ -1,0 +1,53 @@
+* {
+  margin: 0;
+  box-sizing: border-box;
+  padding: 0;
+}
+
+body {
+  background: #fff;
+  background-size: cover;
+}
+
+html,
+body,
+#root {
+  width: 100%;
+  height: 100%;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+}
+.site-layout {
+  padding: 0;
+  .ant-layout-content {
+    padding: 0;
+  }
+}
+.content-warp {
+  max-height: 100%;
+
+  overflow-y: auto;
+}
+.content {
+  padding-top: 20px;
+  max-height: 100%;
+
+  overflow-y: auto;
+  .ant-breadcrumb {
+    margin: 0 16px;
+  }
+
+  .content-box {
+    margin-top: 20px;
+    padding: 0 16px;
+  }
+}
+
+.ant-layout-sider-children {
+  .ant-menu {
+    height: 100%;
+  }
+}

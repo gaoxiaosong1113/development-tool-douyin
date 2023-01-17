@@ -1,0 +1,175 @@
+{
+  "name": "development-tool",
+  "version": "1.0.0",
+  "description": "",
+  "main": "./out/main/main.js",
+  "scripts": {
+    "start:web": "craco start",
+    "build:web": "craco build",
+    "pack": "npm run build && electron-builder --dir",
+    "dist": "npm run build && electron-builder -p never",
+    "start": "electron-forge start",
+    "dev": "electron-vite --ignoreConfigWarning dev -w",
+    "build": "electron-vite --ignoreConfigWarning build",
+    "package": "electron-forge package",
+    "make": "electron-forge make"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@electron-forge/cli": "^6.0.4",
+    "@electron-forge/maker-deb": "^6.0.4",
+    "@electron-forge/maker-rpm": "^6.0.4",
+    "@electron-forge/maker-squirrel": "^6.0.4",
+    "@electron-forge/maker-zip": "^6.0.4",
+    "electron": "^21.3.0",
+    "electron-vite": "^1.0.10",
+    "nodemon": "^2.0.20",
+    "typescript": "^4.8.4",
+    "vite": "^3.1.7"
+  },
+  "build": {
+    "asar": false,
+    "appId": "com.development-tool-douyin.app",
+    "directories": {
+      "output": "build"
+    },
+    "compression": "maximum",
+    "icon": "./assets/logo",
+    "electronDownload": {
+      "mirror": "https://npmmirror.com/mirrors/electron/"
+    },
+    "npmRebuild": false,
+    "fileAssociations": [
+      {
+        "ext": "svg",
+        "mimeType": "image/svg+xml",
+        "role": "Editor"
+      },
+      {
+        "ext": "png",
+        "mimeType": "image/png",
+        "role": "Editor"
+      },
+      {
+        "ext": "jpg",
+        "mimeType": "image/jpeg",
+        "role": "Editor"
+      }
+    ],
+    "beforePack": "./before_pack.js",
+    "linux": {
+      "category": "Utility",
+      "target": [
+        "tar.gz",
+        "deb",
+        "rpm",
+        "AppImage"
+      ],
+      "files": [
+        "!.vscode",
+        "!.github",
+        "!assets/logo/icon.icns",
+        "!assets/logo/icon.ico",
+        "!src",
+        "!node_modules/onnxruntime-node/bin/napi-v3/win32",
+        "!node_modules/onnxruntime-node/bin/napi-v3/darwin"
+      ]
+    },
+    "mac": {
+      "files": [
+        "!lib/gtk-open-with",
+        "!lib/kde-open-with",
+        "!.vscode",
+        "!.github",
+        "!assets/logo/1024x1024.png",
+        "!assets/logo/512x512.png",
+        "!assets/logo/icon.ico",
+        "!src",
+        "!node_modules/onnxruntime-node/bin/napi-v3/win32",
+        "!node_modules/onnxruntime-node/bin/napi-v3/linux"
+      ]
+    },
+    "win": {
+      "icon": "./assets/logo/icon.ico",
+      "target": [
+        "nsis",
+        "zip"
+      ],
+      "files": [
+        "!lib/gtk-open-with",
+        "!lib/kde-open-with",
+        "!.vscode",
+        "!.github",
+        "!assets/logo/icon.icns",
+        "!assets/logo/1024x1024.png",
+        "!assets/logo/512x512.png",
+        "!src",
+        "!node_modules/onnxruntime-node/bin/napi-v3/linux",
+        "!node_modules/onnxruntime-node/bin/napi-v3/darwin"
+      ]
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "include": "./installer.nsh"
+    }
+  },
+  "dependencies": {
+    "@craco/craco": "^7.0.0",
+    "@testing-library/jest-dom": "^5.16.5",
+    "@testing-library/react": "^13.4.0",
+    "@testing-library/user-event": "^13.5.0",
+    "antd": "^5.1.5",
+    "auto-launch": "^5.0.5",
+    "axios": "^0.24.0",
+    "clipboard-event": "^1.6.0",
+    "dayjs": "^1.11.7",
+    "download": "^8.0.0",
+    "download-git-repo": "^3.0.2",
+    "electron-clipboard-extended": "^1.1.1",
+    "electron-clipboard-observer": "^1.0.0",
+    "electron-log": "^4.4.8",
+    "electron-squirrel-startup": "^1.0.0",
+    "electron-updater": "^5.3.0",
+    "http-proxy-middleware": "^2.0.1",
+    "inquirer": "^7.3.3",
+    "jsonfile": "^6.1.0",
+    "md5": "^2.3.0",
+    "minimist": "^1.2.5",
+    "moment": "^2.29.1",
+    "node-polyfill-webpack-plugin": "^2.0.1",
+    "node-window-manager": "^2.2.4",
+    "ora": "^5.1.0",
+    "puppeteer": "^19.5.2",
+    "react": "^18.2.0",
+    "react-app-rewired": "^2.2.1",
+    "react-dom": "^18.2.0",
+    "react-router": "^6.2.1",
+    "react-router-dom": "^6.2.1",
+    "react-scripts": "5.0.1",
+    "rxjs": "^7.5.7",
+    "sass": "^1.45.0",
+    "use-context-selector": "^1.4.1",
+    "vconsole": "^3.11.2",
+    "web-vitals": "^2.1.4"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}
