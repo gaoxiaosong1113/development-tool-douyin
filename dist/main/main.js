@@ -2677,6 +2677,7 @@ function createWindow() {
   mainWindow = new require$$26.BrowserWindow({
     width: 1200,
     height: 800,
+    backgroundColor: "rgba(0,0,0,0)",
     movable: true,
     vibrancy: "light",
     icon: appIcon,
@@ -15650,7 +15651,11 @@ function urlToOptions$1(url2) {
   return options;
 }
 var urlToOptions_1 = urlToOptions$1;
-const __viteBrowserExternal = {};
+const __viteBrowserExternal = new Proxy({}, {
+  get(_, key2) {
+    throw new Error(`Module "" has been externalized for browser compatibility. Cannot access ".${key2}" in client code.`);
+  }
+});
 const __viteBrowserExternal$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   default: __viteBrowserExternal

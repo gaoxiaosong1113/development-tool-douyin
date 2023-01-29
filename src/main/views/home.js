@@ -37,7 +37,7 @@ export function createWindow() {
     // ...getBounds(),
     width: 1200,
     height: 800,
-    // backgroundColor: '#00000000',
+    backgroundColor: 'rgba(0,0,0,0)',
     movable: true,
     // minimizable: false,
     // autoHideMenuBar: true,
