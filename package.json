@@ -1,6 +1,6 @@
 {
   "name": "development-tool-douyin",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "",
   "main": "dist/main/main.js",
   "productName": "抖音下载",
